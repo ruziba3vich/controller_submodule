@@ -9,11 +9,12 @@ service ControllerService {
     rpc TurnDeviceOff(DeviceRequest) returns (DeviceResponse);
     rpc AddUserToHouse(UserRequest) returns (HouseResponse);
     rpc RemoveUserFromHouse(UserRequest) returns (HouseResponse);
+    rpc GetBatteryStatus(DeviceRequest) returns (BatteryResponse);
 }
 
 message DeviceRequest {
     string device_id = 1;
-    string house_id = 2;
+    string house_id = 2; 
 }
 
 message DeviceResponse {
@@ -29,4 +30,8 @@ message UserRequest {
 message HouseResponse {
     string status = 1;
     string message = 2;
+}
+
+message BatteryResponse {
+    int32 battery = 1;
 }
