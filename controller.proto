@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option go_package = "./controlrpc";
+
+package controller;
+
+service ControllerService {
+    rpc TurnDeviceOn(DeviceRequest) returns (DeviceResponse);
+    rpc TurnDeviceOff(DeviceRequest) returns (DeviceResponse);
+    rpc AddUserToHouse(UserRequest) returns (HouseResponse);
+    rpc RemoveUserFromHouse(UserRequest) returns (HouseResponse);
+}
+
+message DeviceRequest {
+    string device_id = 1;
+    string house_id = 2;
+}
+
+message DeviceResponse {
+    string status = 1;
+    string message = 2;
+}
+
+message UserRequest {
+    string user_id = 1;
+    string house_id = 2;
+}
+
+message HouseResponse {
+    string status = 1;
+    string message = 2;
+}
